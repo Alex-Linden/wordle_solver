@@ -1,5 +1,6 @@
 """words will be in dict format
-    {letter: (blank, yellow, green)}"""
+    {letter: (blank, yellow, green)}
+"""
 
 
 def filtered_words(words, guess):
@@ -14,4 +15,16 @@ def filtered_words(words, guess):
                 break
         else:
             out.append(word)
+    return out
+
+
+def score_guess(guess, potential_answer):
+    out = {}
+    for i, ltr in enumerate(guess):
+        if ltr == potential_answer[i]:
+            out[ltr] = "green"
+        elif ltr in potential_answer:
+            out[ltr] = "yellow"
+        else:
+            out[ltr] = "blank"
     return out
