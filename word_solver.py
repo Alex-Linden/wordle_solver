@@ -61,6 +61,13 @@ def rank_guess(guess, words):
         score = score_guess(guess, potential_guess)
         counts[score] += 1
 
-    print(counts)
+    # print(counts)
 
     return statistics.mean(counts.values())
+
+
+def make_guess(potential_answers, all_words):
+    def _score(word):
+        return rank_guess(word, potential_answers)
+
+    return min(all_words, key=_score)
