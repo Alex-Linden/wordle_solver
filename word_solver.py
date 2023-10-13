@@ -61,4 +61,6 @@ def rank_guess(guess, words):
         score = score_guess(guess, potential_guess)
         counts[score] += 1
 
+    print(counts)
+
     return statistics.mean(counts.values())
