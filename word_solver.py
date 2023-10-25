@@ -42,7 +42,10 @@ def score_guess(guess, potential_answer):
 
     iterates over both to score guess
 
-    returns tuple of the score"""
+    returns tuple of the score
+
+    current limitation => words that have repeated letters either guess or answers
+    will note score the same way the NY Times game scores"""
     out = []
     for i, ltr in enumerate(guess):
         if ltr == potential_answer[i]:
