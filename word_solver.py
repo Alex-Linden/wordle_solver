@@ -77,6 +77,15 @@ def rank_guess(guess, words):
 
 
 def make_guess(potential_answers, all_words):
+    """takes a list of potential answers as ['str',] and all words['str]
+
+    uses rank guess to find the word that returns the lowest rank
+
+    returns that word.
+
+    note: current limitation is there is no way to tie break when multiple words
+    have the same ranking
+    """
     def _score(word):
         return rank_guess(word, potential_answers)
 
