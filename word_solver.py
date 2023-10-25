@@ -55,7 +55,17 @@ def score_guess(guess, potential_answer):
 
 
 def rank_guess(guess, words):
-    """takes a guess 'str' and list of words[]"""
+    """takes a guess 'str' and list of words[]
+
+    groups words based on how many words fit a certain score
+   counts = {
+    (green, blank, yellow) : 2,
+    (blank, blank, blank) : 5,
+    ...
+    }
+
+    returns num that represents the mean of the diff counts
+    """
     counts = defaultdict(int)
     for potential_guess in words:
         score = score_guess(guess, potential_guess)
