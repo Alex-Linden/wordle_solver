@@ -93,3 +93,31 @@ def make_guess(potential_answers, all_words):
         return rank_guess(word, potential_answers)
 
     return min(all_words, key=_score)
+
+
+def score_to_tuple(score):
+    """
+    Takes in score ['g', 'b', 'y', ...]
+
+    turns into tuple usable by other functions
+    """
+    out = []
+
+    for guess in score:
+        if guess == 'g':
+            out.append(Score.Green)
+        elif guess in 'y':
+            out.append(Score.Yellow)
+        else:
+            out.append(Score.Blank)
+    return tuple(out)
+
+
+def suggest_next_guess(guess, score, all_words):
+    """used to help a human come up with next guess"""
+
+    tuple_score = score_to_tuple(score)
+    potential_answers = filtered_words(all_words, guess, tuple_score)
+
+    return make_guess(potential_answers, all_words)
+
